@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Airplay by elcuervo</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Airplay</h1>
+        <p>Airplay bindings to Ruby</p>
+        <p class="view"><a href="https://github.com/elcuervo/airplay">View the Project on GitHub <small>elcuervo/airplay</small></a></p>
+        <ul>
+          <li><a href="https://github.com/elcuervo/airplay/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/elcuervo/airplay/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/elcuervo/airplay">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><img src="http://elcuervo.co/images/posts/airplay/ruby_airplay.png" alt="Ruby Airplay"></p>
+
+<p>A client (and someday a server) of the superfancy http content stream technique
+that Apple uses in its products.</p>
+
+<p>Now supports any Airplay-compatible device, like <a href="http://www.airserverapp.com/">Airserver</a></p>
+
+<p>You can try this in an AppleTV for instance.</p>
+
+<h2>Basic Usage</h2>
+
+<div class="highlight">
+<pre><span class="nb">require</span> <span class="s1">'airplay'</span>
+
+<span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+<span class="c1"># To send an image</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"fancy_pants.jpg"</span><span class="p">)</span>
+
+<span class="c1"># To stream a video</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_video</span><span class="p">(</span><span class="s2">"<a href="http://www.yo-yo.org/mp4/yu2.mp4">http://www.yo-yo.org/mp4/yu2.mp4</a>"</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>Sending images</h2>
+
+<div class="highlight">
+<pre><span class="nb">require</span> <span class="s1">'airplay'</span>
+
+<span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"fancy_pants.jpg"</span><span class="p">)</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"/home/userman/Pictures/fancy_pants.jpg"</span><span class="p">))</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"<a href="http://mine.icanhascheezburger.com/completestore/Wezinyercupz128401525895963750.jpg">http://mine.icanhascheezburger.com/completestore/Wezinyercupz128401525895963750.jpg</a>"</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<h3>Transitions</h3>
+
+<div class="highlight">
+<pre><span class="nb">require</span> <span class="s1">'airplay'</span>
+
+<span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"fancy_pants.jpg"</span><span class="p">,</span> <span class="ss">:dissolve</span><span class="p">)</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"fancy_pants.jpg"</span><span class="p">,</span> <span class="ss">:slide_left</span><span class="p">)</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"fancy_pants.jpg"</span><span class="p">,</span> <span class="ss">:slide_right</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>Scrub</h2>
+
+<div class="highlight">
+<pre><span class="nb">require</span> <span class="s1">'airplay'</span>
+
+<span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">scrub</span>
+<span class="c1"># {:duration =&gt; 189, :position =&gt; 50}</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">scrub</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># Media goes to 30s</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">scrub</span><span class="p">(</span><span class="s2">"10%"</span><span class="p">)</span> <span class="c1"># Media goes to the 10% of its duration</span>
+</pre>
+</div>
+
+
+<h2>Password Authentication</h2>
+
+<div class="highlight">
+<pre><span class="nb">require</span> <span class="s1">'airplay'</span>
+
+<span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">use</span> <span class="s2">"Apple TV"</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">password</span> <span class="s2">"password"</span>
+
+<span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"lolcatz.jpg"</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>Player</h2>
+
+<div class="highlight">
+<pre><span class="nb">require</span> <span class="s1">'airplay'</span>
+
+<span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+<span class="n">player</span> <span class="o">=</span> <span class="n">airplay</span><span class="o">.</span><span class="n">send_video</span><span class="p">(</span><span class="s2">"<a href="http://www.yo-yo.org/mp4/yu2.mp4">http://www.yo-yo.org/mp4/yu2.mp4</a>"</span><span class="p">)</span>
+<span class="n">player</span><span class="o">.</span><span class="n">pause</span>
+<span class="n">player</span><span class="o">.</span><span class="n">resume</span>
+<span class="n">player</span><span class="o">.</span><span class="n">scrub</span>
+<span class="c1"># {:duration =&gt; 189, :position =&gt; 50}</span>
+<span class="n">player</span><span class="o">.</span><span class="n">scrub</span><span class="p">(</span><span class="s2">"50%"</span><span class="p">)</span> <span class="c1"># Go to the half of the media</span>
+<span class="n">player</span><span class="o">.</span><span class="n">stop</span>
+</pre>
+</div>
+
+
+<h2>Useful methods</h2>
+
+<div class="highlight">
+<pre><span class="nb">require</span> <span class="s1">'airplay'</span>
+
+<span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">browse</span>
+<span class="c1">#=&gt; [#&lt;Airplay::Node:0x007fbb5a83eb28 @name="elCuervo", @domain="local.", @ip="10.1.0.63"&gt;, #&lt;Airplay::Node:0x007fbb5a83b0b8 @name="Apple TV", @domain="local.", @ip="10.1.0.220"&gt;]</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">use</span> <span class="s2">"elCuervo"</span>
+<span class="n">airplay</span><span class="o">.</span><span class="n">use</span> <span class="s2">"Apple TV"</span>
+</pre>
+</div>
+
+
+<h2>Contributors</h2>
+
+<p>Thanks to all the contributors:</p>
+
+<ul>
+<li>File handler support when sending an image. By <a href="/pote" class="user-mention">@pote</a>
+</li>
+<li>Persistent connections debugging. By <a href="/sodabrew" class="user-mention">@sodabrew</a>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/elcuervo">elcuervo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
