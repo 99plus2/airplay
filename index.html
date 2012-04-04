@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Airplay by elcuervo</title>
-    
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="javascripts/scale.fix.js"></script>
@@ -26,18 +26,18 @@
         </ul>
       </header>
       <section>
-        <p><img src="http://elcuervo.co/images/posts/airplay/ruby_airplay.png" alt="Ruby Airplay"></p>
+        <p><img src="images/ruby_airplay.png" alt="Ruby Airplay"></p>
 
-<p>A client (and someday a server) of the superfancy http content stream technique
-that Apple uses in its products.</p>
+        <p>A client (and someday a server) of the superfancy http content stream technique
+          that Apple uses in its products.</p>
 
-<p>Now supports any Airplay-compatible device, like <a href="http://www.airserverapp.com/">Airserver</a></p>
+        <p>Now supports any Airplay-compatible device, like <a href="http://www.airserverapp.com/">Airserver</a></p>
 
-<p>You can try this in an AppleTV for instance.</p>
+        <p>You can try this in an AppleTV for instance.</p>
 
-<h2>Basic Usage</h2>
+        <h2>Basic Usage</h2>
 
-<div class="highlight">
+        <div class="highlight">
 <pre><span class="nb">require</span> <span class="s1">'airplay'</span>
 
 <span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
@@ -47,12 +47,12 @@ that Apple uses in its products.</p>
 <span class="c1"># To stream a video</span>
 <span class="n">airplay</span><span class="o">.</span><span class="n">send_video</span><span class="p">(</span><span class="s2">"<a href="http://www.yo-yo.org/mp4/yu2.mp4">http://www.yo-yo.org/mp4/yu2.mp4</a>"</span><span class="p">)</span>
 </pre>
-</div>
+      </div>
 
 
-<h2>Sending images</h2>
+      <h2>Sending images</h2>
 
-<div class="highlight">
+      <div class="highlight">
 <pre><span class="nb">require</span> <span class="s1">'airplay'</span>
 
 <span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
@@ -61,12 +61,12 @@ that Apple uses in its products.</p>
 <span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"/home/userman/Pictures/fancy_pants.jpg"</span><span class="p">))</span>
 <span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"<a href="http://mine.icanhascheezburger.com/completestore/Wezinyercupz128401525895963750.jpg">http://mine.icanhascheezburger.com/completestore/Wezinyercupz128401525895963750.jpg</a>"</span><span class="p">)</span>
 </pre>
-</div>
+    </div>
 
 
-<h3>Transitions</h3>
+    <h3>Transitions</h3>
 
-<div class="highlight">
+    <div class="highlight">
 <pre><span class="nb">require</span> <span class="s1">'airplay'</span>
 
 <span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
@@ -75,12 +75,12 @@ that Apple uses in its products.</p>
 <span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"fancy_pants.jpg"</span><span class="p">,</span> <span class="ss">:slide_left</span><span class="p">)</span>
 <span class="n">airplay</span><span class="o">.</span><span class="n">send_image</span><span class="p">(</span><span class="s2">"fancy_pants.jpg"</span><span class="p">,</span> <span class="ss">:slide_right</span><span class="p">)</span>
 </pre>
-</div>
+  </div>
 
 
-<h2>Scrub</h2>
+  <h2>Scrub</h2>
 
-<div class="highlight">
+  <div class="highlight">
 <pre><span class="nb">require</span> <span class="s1">'airplay'</span>
 
 <span class="n">airplay</span> <span class="o">=</span> <span class="no">Airplay</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
@@ -142,10 +142,10 @@ that Apple uses in its products.</p>
 <p>Thanks to all the contributors:</p>
 
 <ul>
-<li>File handler support when sending an image. By <a href="/pote" class="user-mention">@pote</a>
-</li>
-<li>Persistent connections debugging. By <a href="/sodabrew" class="user-mention">@sodabrew</a>
-</li>
+  <li>File handler support when sending an image. By <a href="/pote" class="user-mention">@pote</a>
+  </li>
+  <li>Persistent connections debugging. By <a href="/sodabrew" class="user-mention">@sodabrew</a>
+  </li>
 </ul>
       </section>
       <footer>
